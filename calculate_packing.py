@@ -5,6 +5,9 @@ import time
 from mathutils import Vector
 from math import pi
 
+D = bpy.data
+C = bpy.context
+
 def bounding_sphere(objects):
     points_co_global = []
     for obj in objects:
