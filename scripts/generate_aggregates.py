@@ -99,11 +99,11 @@ def distribute_on_sphere(n, r):
 
 bpy.ops.object.select_all(action='DESELECT')
 
-primary_particle_radius = 0.5  # Radius of each sphere
+primary_particle_radius = 0.5  # Radius of each sphere (meters)
 num_primary_particles = 5 # Number of spheres per aggregate
 
 num_aggregates = 100
-initial_placement_radius = 50
+initial_placement_radius = 50 # (meters)
 aggregate_locations = distribute_on_sphere(num_aggregates, initial_placement_radius)
 
 for i in range(len(aggregate_locations)):

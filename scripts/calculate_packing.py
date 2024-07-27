@@ -4,9 +4,12 @@ import csv
 import time
 from mathutils import Vector
 from math import pi
+import generate_aggregates as ga
 
-D = bpy.data
-C = bpy.context
+# Below three variables are for file name
+radius = ga.primary_particle_radius
+num_particles = ga.num_primary_particles
+num_aggregates = ga.num_aggregates
 
 def bounding_sphere(objects):
     points_co_global = []
@@ -45,11 +48,12 @@ mesh_objects = [obj for obj in bpy.data.objects if obj.type == 'MESH']
 # Calculate initial aggregate volume
 aggregate_volume = estimate_aggregate_volume(mesh_objects)
 
+# Creating the file names and path
+csv_file_name = f"{radius}radius_{num_particles}particles_{num_aggregates}aggregates"
+csv_file_path = f"data/{csv_file_name}.csv"
+
 # Output results to CSV
-#mac
-with open(r"/Users/espiller/Documents/Research - Zachariah Group/aggregate_packing_data.csv", 'w', newline='') as csvfile:
-#win
-#with open(r"E:\Documents\Research - Zachariah Group\aggregate_packing_data.csv", 'w', newline='') as csvfile:   
+with open(csv_file_path, 'w', newline='') as csvfile:
     fieldnames = ['time', 'aggregate_volume', 'bounding_radius', 'packing_fraction', 'max_radius']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
